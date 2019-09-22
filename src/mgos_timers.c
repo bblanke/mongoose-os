@@ -101,6 +101,7 @@ static void mgos_timer_ev(struct mg_connection *nc, int ev, void *ev_data,
 mgos_timer_id mgos_set_timer(int msecs, int flags, timer_callback cb,
                              void *arg) {
   struct timer_info *ti = (struct timer_info *) calloc(1, sizeof(*ti));
+  LOG(LL_INFO, ("Calloc'd timer with id: %d", (mgos_timer_id) ti));
   if (ti == NULL) return MGOS_INVALID_TIMER_ID;
   if (flags & MGOS_TIMER_REPEAT) {
     ti->interval_ms = msecs;
